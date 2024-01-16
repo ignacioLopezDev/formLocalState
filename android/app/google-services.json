@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "839934520126",
+    "project_id": "form-local-state-1xl3ri",
+    "storage_bucket": "form-local-state-1xl3ri.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839934520126:android:e31ead63577abb8d17da6f",
+        "android_client_info": {
+          "package_name": "com.mycompany.formlocalstate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkL3Z1ZZkVdjJRnr4_7xyWKd7ICbffuEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
