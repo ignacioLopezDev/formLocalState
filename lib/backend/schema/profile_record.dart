@@ -40,11 +40,6 @@ class ProfileRecord extends FirestoreRecord {
   String get photoProfile => _photoProfile ?? '';
   bool hasPhotoProfile() => _photoProfile != null;
 
-  // "photoBackground" field.
-  String? _photoBackground;
-  String get photoBackground => _photoBackground ?? '';
-  bool hasPhotoBackground() => _photoBackground != null;
-
   // "nickName" field.
   String? _nickName;
   String get nickName => _nickName ?? '';
@@ -56,7 +51,6 @@ class ProfileRecord extends FirestoreRecord {
     _lastName = snapshotData['lastName'] as String?;
     _emailAdress = snapshotData['emailAdress'] as String?;
     _photoProfile = snapshotData['photoProfile'] as String?;
-    _photoBackground = snapshotData['photoBackground'] as String?;
     _nickName = snapshotData['nickName'] as String?;
   }
 
@@ -100,7 +94,6 @@ Map<String, dynamic> createProfileRecordData({
   String? lastName,
   String? emailAdress,
   String? photoProfile,
-  String? photoBackground,
   String? nickName,
 }) {
   final firestoreData = mapToFirestore(
@@ -110,7 +103,6 @@ Map<String, dynamic> createProfileRecordData({
       'lastName': lastName,
       'emailAdress': emailAdress,
       'photoProfile': photoProfile,
-      'photoBackground': photoBackground,
       'nickName': nickName,
     }.withoutNulls,
   );
@@ -128,7 +120,6 @@ class ProfileRecordDocumentEquality implements Equality<ProfileRecord> {
         e1?.lastName == e2?.lastName &&
         e1?.emailAdress == e2?.emailAdress &&
         e1?.photoProfile == e2?.photoProfile &&
-        e1?.photoBackground == e2?.photoBackground &&
         e1?.nickName == e2?.nickName;
   }
 
@@ -139,7 +130,6 @@ class ProfileRecordDocumentEquality implements Equality<ProfileRecord> {
         e?.lastName,
         e?.emailAdress,
         e?.photoProfile,
-        e?.photoBackground,
         e?.nickName
       ]);
 

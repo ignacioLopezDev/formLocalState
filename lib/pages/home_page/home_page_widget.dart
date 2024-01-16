@@ -66,9 +66,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: Image.network(
-                  'https://picsum.photos/seed/205/600',
-                  fit: BoxFit.cover,
+                child: Image.asset(
+                  'assets/images/undraw_Male_avatar_g98d.png',
+                  fit: BoxFit.contain,
+                  alignment: const Alignment(0.0, 0.0),
                 ),
               ),
             ),
@@ -79,7 +80,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: Text(
                   'User App',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Montserrat',
+                        fontFamily: 'PT Sans',
                         color: Colors.white,
                         fontSize: 22.0,
                         letterSpacing: 2.0,
@@ -90,9 +91,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             actions: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(-1.0, 1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderColor: const Color(0x0019307D),
                     borderRadius: 20.0,
@@ -104,8 +105,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       color: Color(0xFFEF8900),
                       size: 30.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      context.pushNamed(
+                        'addUser',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: const TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.leftToRight,
+                          ),
+                        },
+                      );
                     },
                   ),
                 ),
@@ -140,6 +149,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       'Hello World',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 30.0,
                             fontWeight: FontWeight.w600,
                           ),
@@ -215,7 +225,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
+                                      5.0, 15.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -275,7 +285,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 padding: const EdgeInsets.all(6.0),
                 child: Container(
                   width: double.infinity,
-                  height: 461.4,
+                  height: 439.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     boxShadow: const [
@@ -286,6 +296,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       )
                     ],
                     borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ListView(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          children: const [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
