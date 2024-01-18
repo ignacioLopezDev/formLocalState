@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyB01_gFNt7H8zbRoyMPdsTJljzNL14wa1Q</string>
+	<string>AIzaSyCAChIhT3OOJJ4Q1L37SozDvTdKqcgwgS0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>839934520126</string>
+	<string>847122619091</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mycompany.formlocalstate</string>
+	<string>com.mycompany.fromlocalstate</string>
 	<key>PROJECT_ID</key>
-	<string>form-local-state-1xl3ri</string>
+	<string>from-localstate</string>
 	<key>STORAGE_BUCKET</key>
-	<string>form-local-state-1xl3ri.appspot.com</string>
+	<string>from-localstate.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:839934520126:ios:fd630007160f6de917da6f</string>
+	<string>1:847122619091:ios:2235738eb0d11c19ab9226</string>
 </dict>
 </plist>

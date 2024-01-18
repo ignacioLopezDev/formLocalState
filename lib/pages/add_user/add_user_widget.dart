@@ -4,9 +4,11 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'add_user_model.dart';
 export 'add_user_model.dart';
 
@@ -80,6 +82,8 @@ class _AddUserWidgetState extends State<AddUserWidget>
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -511,16 +515,74 @@ class _AddUserWidgetState extends State<AddUserWidget>
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        width: 120.0,
-                                        height: 120.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.network(
-                                          'https://picsum.photos/seed/654/600',
-                                          fit: BoxFit.cover,
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          final selectedMedia =
+                                              await selectMediaWithSourceBottomSheet(
+                                            context: context,
+                                            allowPhoto: true,
+                                          );
+                                          if (selectedMedia != null &&
+                                              selectedMedia.every((m) =>
+                                                  validateFileFormat(
+                                                      m.storagePath,
+                                                      context))) {
+                                            setState(() =>
+                                                _model.isDataUploading1 = true);
+                                            var selectedUploadedFiles =
+                                                <FFUploadedFile>[];
+
+                                            try {
+                                              selectedUploadedFiles =
+                                                  selectedMedia
+                                                      .map(
+                                                          (m) => FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                      .toList();
+                                            } finally {
+                                              _model.isDataUploading1 = false;
+                                            }
+                                            if (selectedUploadedFiles.length ==
+                                                selectedMedia.length) {
+                                              setState(() {
+                                                _model.uploadedLocalFile1 =
+                                                    selectedUploadedFiles.first;
+                                              });
+                                            } else {
+                                              setState(() {});
+                                              return;
+                                            }
+                                          }
+                                        },
+                                        child: Container(
+                                          width: 120.0,
+                                          height: 120.0,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.memory(
+                                            _model.uploadedLocalFile1.bytes ??
+                                                Uint8List.fromList([]),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ].divide(const SizedBox(height: 14.0)),
@@ -539,11 +601,72 @@ class _AddUserWidgetState extends State<AddUserWidget>
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    final selectedMedia =
+                        await selectMediaWithSourceBottomSheet(
+                      context: context,
+                      allowPhoto: true,
+                    );
+                    if (selectedMedia != null &&
+                        selectedMedia.every((m) =>
+                            validateFileFormat(m.storagePath, context))) {
+                      setState(() => _model.isDataUploading2 = true);
+                      var selectedUploadedFiles = <FFUploadedFile>[];
+
+                      try {
+                        selectedUploadedFiles = selectedMedia
+                            .map((m) => FFUploadedFile(
+                                  name: m.storagePath.split('/').last,
+                                  bytes: m.bytes,
+                                  height: m.dimensions?.height,
+                                  width: m.dimensions?.width,
+                                  blurHash: m.blurHash,
+                                ))
+                            .toList();
+                      } finally {
+                        _model.isDataUploading2 = false;
+                      }
+                      if (selectedUploadedFiles.length ==
+                          selectedMedia.length) {
+                        setState(() {
+                          _model.uploadedLocalFile2 =
+                              selectedUploadedFiles.first;
+                        });
+                      } else {
+                        setState(() {});
+                        return;
+                      }
+                    }
+                  },
+                  text: 'Upload To Local State',
+                  options: FFButtonOptions(
+                    height: 40.0,
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                    iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Readex Pro',
+                          color: Colors.white,
+                        ),
+                    elevation: 3.0,
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
                     await UsersRecord.collection.doc().set({
                       ...createUsersRecordData(
-                        nickName: _model.textController3.text,
                         firstName: _model.textController1.text,
                         lastName: _model.textController2.text,
+                        nickName: _model.textController3.text,
                         email: _model.textController4.text,
                       ),
                       ...mapToFirestore(
@@ -552,8 +675,20 @@ class _AddUserWidgetState extends State<AddUserWidget>
                         },
                       ),
                     });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Done!',
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                        duration: const Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).secondary,
+                      ),
+                    );
                   },
-                  text: 'Create User',
+                  text: 'Upload To Firestore',
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:

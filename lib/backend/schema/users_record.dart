@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 
@@ -40,15 +39,10 @@ class UsersRecord extends FirestoreRecord {
   String get email => _email ?? '';
   bool hasEmail() => _email != null;
 
-  // "profilePhoto" field.
-  String? _profilePhoto;
-  String get profilePhoto => _profilePhoto ?? '';
-  bool hasProfilePhoto() => _profilePhoto != null;
-
-  // "backgroundPhoto" field.
-  String? _backgroundPhoto;
-  String get backgroundPhoto => _backgroundPhoto ?? '';
-  bool hasBackgroundPhoto() => _backgroundPhoto != null;
+  // "profileImage" field.
+  String? _profileImage;
+  String get profileImage => _profileImage ?? '';
+  bool hasProfileImage() => _profileImage != null;
 
   void _initializeFields() {
     _created = snapshotData['created'] as DateTime?;
@@ -56,8 +50,7 @@ class UsersRecord extends FirestoreRecord {
     _lastName = snapshotData['lastName'] as String?;
     _nickName = snapshotData['nickName'] as String?;
     _email = snapshotData['email'] as String?;
-    _profilePhoto = snapshotData['profilePhoto'] as String?;
-    _backgroundPhoto = snapshotData['backgroundPhoto'] as String?;
+    _profileImage = snapshotData['profileImage'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -99,8 +92,7 @@ Map<String, dynamic> createUsersRecordData({
   String? lastName,
   String? nickName,
   String? email,
-  String? profilePhoto,
-  String? backgroundPhoto,
+  String? profileImage,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -109,8 +101,7 @@ Map<String, dynamic> createUsersRecordData({
       'lastName': lastName,
       'nickName': nickName,
       'email': email,
-      'profilePhoto': profilePhoto,
-      'backgroundPhoto': backgroundPhoto,
+      'profileImage': profileImage,
     }.withoutNulls,
   );
 
@@ -127,8 +118,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.lastName == e2?.lastName &&
         e1?.nickName == e2?.nickName &&
         e1?.email == e2?.email &&
-        e1?.profilePhoto == e2?.profilePhoto &&
-        e1?.backgroundPhoto == e2?.backgroundPhoto;
+        e1?.profileImage == e2?.profileImage;
   }
 
   @override
@@ -138,8 +128,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.lastName,
         e?.nickName,
         e?.email,
-        e?.profilePhoto,
-        e?.backgroundPhoto
+        e?.profileImage
       ]);
 
   @override

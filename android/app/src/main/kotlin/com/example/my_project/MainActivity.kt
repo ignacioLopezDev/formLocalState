@@ -1,4 +1,4 @@
-package com.mycompany.formlocalstate
+package com.mycompany.fromlocalstate
 
 import io.flutter.embedding.android.FlutterActivity
 

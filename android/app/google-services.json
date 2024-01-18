@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "839934520126",
-    "project_id": "form-local-state-1xl3ri",
-    "storage_bucket": "form-local-state-1xl3ri.appspot.com"
+    "project_number": "847122619091",
+    "project_id": "from-localstate",
+    "storage_bucket": "from-localstate.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:839934520126:android:e31ead63577abb8d17da6f",
+        "mobilesdk_app_id": "1:847122619091:android:ecdc89c59ab23462ab9226",
         "android_client_info": {
-          "package_name": "com.mycompany.formlocalstate"
+          "package_name": "com.mycompany.fromlocalstate"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBkL3Z1ZZkVdjJRnr4_7xyWKd7ICbffuEA"
+          "current_key": "AIzaSyDjmxQjz0w_Az9h2pnVHnWOG9rCkoCxouc"
         }
       ],
       "services": {

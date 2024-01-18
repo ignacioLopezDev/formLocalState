@@ -5,12 +5,12 @@ Future initFirebase() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
         options: const FirebaseOptions(
-            apiKey: "AIzaSyBixTSPP252fsa6lZrVHUOXO1XqRWZgmbI",
-            authDomain: "form-local-state-1xl3ri.firebaseapp.com",
-            projectId: "form-local-state-1xl3ri",
-            storageBucket: "form-local-state-1xl3ri.appspot.com",
-            messagingSenderId: "839934520126",
-            appId: "1:839934520126:web:eb9d746228c543b317da6f"));
+            apiKey: "AIzaSyCk7iJNHWskliTTnb-fkXsTKwYTxcVwc_w",
+            authDomain: "from-localstate.firebaseapp.com",
+            projectId: "from-localstate",
+            storageBucket: "from-localstate.appspot.com",
+            messagingSenderId: "847122619091",
+            appId: "1:847122619091:web:2d1617b151926bfbab9226"));
   } else {
     await Firebase.initializeApp();
   }

@@ -22,6 +22,13 @@ class AddUserModel extends FlutterFlowModel<AddUserWidget> {
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
+  bool isDataUploading1 = false;
+  FFUploadedFile uploadedLocalFile1 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
 
   /// Initialization and disposal methods.
 
